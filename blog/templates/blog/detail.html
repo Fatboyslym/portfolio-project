@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="{% static 'icon.png' %}">
-  <title>Dr FatBoySlym</title>
+  <title>{{blog.title}}</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -26,45 +26,19 @@
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="https://twitter.com/bfatboyslym">Twitter</a>
           <a target="_blank" class="nav-item nav-link" href="{% static 'CurriculumVitae.pdf'%}">Resume</a>
-          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main role="main">
-
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hi!<br/> I am Dr FatBoySlym</h1>
-        <p class="lead text-muted">Hi, my name is Awoseyi Ayomikun, I am a data scientist, a researcher in the mobile communication environment, I am an assistant lecturer in the areas of programming (Java, Python), 8086 assembly language, Algorithms. I love singing (Gospel Blues and Rock), I also love astronomy, however still working hard to get my first telescope, if you feel like helping me out click<a href="#"> here</a> </p>
-        <img class="img-fluid" src="{% static 'GlassesEyes.jpg'%}" height="300" width="300" alt=""/>
-        <p>
-          <a href="mailto:akapelashadow@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row">
-        <!-- loop through job objects -->
-        {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="{{job.image.url}}" />
-              <div class="card-body">
-                <p class="card-text">{{job.summary}}</p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-        <!-- end the loop Job -->
-        </div>
-      </div>
+    <div class="container">
+        <h1 class="text-center pt-3">{{blog.title}}</h1>
+        <p class="text-center">{{blog.pub_date}} </p>
+        <p class="text-center"><img class="img-fluid" src="{{blog.image.url }}" alt="" height="400" width="400"></p>
+        <p> {{blog.body}} </p>
     </div>
-
   </main>
 
   <footer class="text-muted">
